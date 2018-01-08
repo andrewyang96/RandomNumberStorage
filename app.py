@@ -16,6 +16,7 @@ logger.setLevel(logging.DEBUG)
 def get_db_connection():
     """Get psycopg2 connection to RDS instance."""
     db_config = config['database']
+    logger.info('Connecting to database at {0}'.format(db_config['host_url']))
     return psycopg2.connect(
         host=db_config['host_url'],
         dbname=db_config['db_name'],
@@ -24,7 +25,7 @@ def get_db_connection():
 
 @app.route('/', methods=['GET'])
 def main_handler(event=None, context=None):
-    table_name = config['database']['table_name']
+    logger.info('Handler called!')
     conn = get_db_connection()
     cur = conn.cursor()
 
@@ -32,9 +33,10 @@ def main_handler(event=None, context=None):
     current_dt = datetime.utcnow()
 
     cur.execute(
-        'INSERT INTO %s (timestamp, random_num) VALUES (%s, %s)',
-        (table_name, current_dt, random_num))
+        'INSERT INTO history (timestamp, random_num) VALUES (%s, %s)',
+        (current_dt, random_num))
     conn.commit()
+    cur.close()
     conn.close()
 
     logger.info(

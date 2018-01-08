@@ -1,2 +1,2 @@
 # RandomNumberStorage
-Test application using AWS RDS (Postgres) and Lambda.
+Test application using AWS Lambda, SES, and RDS (Postgres).

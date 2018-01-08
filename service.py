@@ -20,6 +20,7 @@ def handler(event, context):
     conn = get_db_connection()
     cur = conn.cursor()
 
+    print('Generating number')
     random_num = random.randint(0, config['max_number'])
     current_dt = datetime.utcnow()
 

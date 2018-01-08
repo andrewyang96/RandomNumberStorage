@@ -17,9 +17,10 @@ def get_db_connection():
     """Get psycopg2 connection to RDS instance."""
     db_config = config['database']
     return psycopg2.connect(
+        host=db_config['host_url'],
         dbname=db_config['db_name'],
         user=db_config['username'],
-        host=db_config['host_url'])
+        password=db_config['password'])
 
 @app.route('/', methods=['GET'])
 def main_handler(event=None, context=None):

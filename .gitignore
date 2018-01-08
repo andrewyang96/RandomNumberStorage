@@ -100,5 +100,4 @@ ENV/
 # mypy
 .mypy_cache/
 
-psycopg2*/
-*.zip
+config.json

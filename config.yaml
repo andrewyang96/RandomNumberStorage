@@ -1,3 +1,6 @@
 region: us-east-1
+
 runtime: python3.6
 handler: service.handler
+function_name: random_numbers
+description: Computes a random number, stores it to RDS, and sends you an email.

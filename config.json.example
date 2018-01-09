@@ -6,5 +6,9 @@
 		"db_name": "insert_your_db_name",
 		"username": "insert_your_username",
 		"password": "insert_your_password"
+	},
+	"email": {
+		"sender": "Your Name <sender@example.com>",
+		"recipient": "recipient@example.com"
 	}
 }
